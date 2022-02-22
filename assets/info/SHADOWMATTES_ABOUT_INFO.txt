@@ -1,0 +1,1 @@
+{"Elephant":1,"Globe Base":0,"Globe Earth":0,"Teapot":0}

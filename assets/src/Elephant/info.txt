@@ -1,0 +1,1 @@
+{"init_rotation":{"1":[222,222,222],"2":[222,222,222],"3":[222,222,222]},"main":"res://assets/src/Elephant/main.tscn","name":"Elephant","path_to_model":"res://assets/src/Elephant/model.obj","rotation_round":10,"scale":[0.1,0.1,0.1],"win_rotation":[-7,97,0]}

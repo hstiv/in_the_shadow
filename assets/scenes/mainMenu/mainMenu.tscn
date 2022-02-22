@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/scripts/mainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Map.theme" type="Theme" id=2]
+[ext_resource path="res://assets/images/Background.jpg" type="Texture" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 513.039, 301.1 )
+scale = Vector2( 0.300566, 0.299411 )
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 91.0
+margin_top = 76.0
+margin_right = 291.0
+margin_bottom = 422.0
+theme = ExtResource( 2 )
+custom_constants/separation = 22
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+theme = SubResource( 1 )
+text = "Play"
+
+[node name="Add" type="Button" parent="VBoxContainer"]
+margin_top = 92.0
+margin_right = 200.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 0, 70 )
+text = "Add"
+
+[node name="Test" type="Button" parent="VBoxContainer"]
+margin_top = 184.0
+margin_right = 200.0
+margin_bottom = 254.0
+rect_min_size = Vector2( 0, 70 )
+text = "Test"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 276.0
+margin_right = 200.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 70 )
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/hide = SubResource( 2 )
+anims/show = SubResource( 3 )
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Add" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="VBoxContainer/Test" to="." method="_on_Test_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,1 @@
+{"init_rotation":{"1":[111,111,111],"2":[111,111,111],"3":[111,111,111]},"main":"res://assets/src/Teapot/main.tscn","name":"Teapot","path_to_model":"res://assets/src/Teapot/model.obj","rotation_round":10,"scale":[0.1,0.1,0.1],"win_rotation":[0,0,0]}

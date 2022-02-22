@@ -1,0 +1,1 @@
+{"init_rotation":{"1":[222,222,222],"2":[222,222,222],"3":[222,222,222]},"main":"res://assets/src/Globe Base/main.tscn","name":"Globe Base","path_to_model":"res://assets/src/Globe Base/model.obj","rotation_round":10,"scale":[0.05,0.05,0.05],"win_rotation":[362,265,222]}

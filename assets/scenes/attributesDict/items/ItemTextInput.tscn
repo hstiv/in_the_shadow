@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/ItemTextInput.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/attributesDict/items/AttributeItem.tscn" type="PackedScene" id=2]
+
+
+[node name="ItemTextInput" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttributeItem" parent="." instance=ExtResource( 2 )]
+
+[node name="TextEdit" type="TextEdit" parent="AttributeItem"]
+margin_left = 16.5186
+margin_top = 0.417137
+margin_right = 26.5186
+margin_bottom = 5.41714
+rect_min_size = Vector2( 10, 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="resized" from="." to="." method="_on_ItemTextInput_resized"]
+[connection signal="updateValueSectorSize" from="AttributeItem" to="." method="_on_AttributeItem_updateValueSectorSize"]

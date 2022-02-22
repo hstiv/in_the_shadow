@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/AttributeItem.gd" type="Script" id=1]
+
+
+[node name="AttributeItem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1020.0
+margin_bottom = -586.0
+rect_min_size = Vector2( 0, 14 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Control" parent="."]
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Name"]
+margin_bottom = 14.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,582 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/scripts/AddNewShadowmatic.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/BG.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/font_size_1.res" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/Map.theme" type="Theme" id=4]
+[ext_resource path="res://assets/scenes/room/Room.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.215686, 0.215686, 0.215686, 0.980392 )
+margin_left = 2.5199
+margin_right = 1026.52
+margin_bottom = 1024.0
+rect_scale = Vector2( 1, 0.586 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 3, 3 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 115.536
+margin_top = 19.1139
+margin_right = 214.536
+margin_bottom = 33.1139
+rect_scale = Vector2( 3, 3 )
+text = "Add new object"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = 705.784
+margin_top = 21.4285
+margin_right = 1005.78
+margin_bottom = 121.428
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddButton" type="Button" parent="Control"]
+self_modulate = Color( 0.631373, 1, 0.768627, 1 )
+margin_left = 50.0
+margin_right = 250.0
+margin_bottom = 100.0
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="."]
+margin_left = 450.0
+margin_top = 21.428
+margin_right = 749.996
+margin_bottom = 121.428
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteAll" type="Button" parent="Control2"]
+self_modulate = Color( 0.972549, 0, 0, 1 )
+margin_left = 50.0
+margin_right = 250.0
+margin_bottom = 100.0
+text = "  Delete All  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Params" type="Control" parent="."]
+margin_left = 470.0
+margin_top = 155.0
+margin_right = 1010.0
+margin_bottom = 575.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Params"]
+margin_right = 550.0
+margin_bottom = 430.0
+color = Color( 0.415686, 0.415686, 0.415686, 0.572549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Params"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 280.0
+margin_bottom = 220.0
+rect_scale = Vector2( 2, 2 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inputs" type="VBoxContainer" parent="Params/ScrollContainer"]
+margin_bottom = 390.0
+custom_constants/separation = 33
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModelPath" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/ModelPath"]
+margin_right = 280.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Model path"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path" type="LineEdit" parent="Params/ScrollContainer/Inputs/ModelPath"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 5 )
+placeholder_text = "path to model (.obj)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scale" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_top = 43.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/Scale"]
+margin_right = 303.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 50 )
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Scale"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="VBoxContainer" parent="Params/ScrollContainer/Inputs/Scale"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 75.0
+theme = ExtResource( 4 )
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Control" parent="Params/ScrollContainer/Inputs/Scale/Value"]
+margin_right = 140.0
+
+[node name="LineEditX" type="LineEdit" parent="Params/ScrollContainer/Inputs/Scale/Value/X"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Params/ScrollContainer/Inputs/Scale/Value/X"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Y" type="Control" parent="Params/ScrollContainer/Inputs/Scale/Value"]
+margin_top = 25.0
+margin_right = 140.0
+margin_bottom = 25.0
+
+[node name="LineEditY" type="LineEdit" parent="Params/ScrollContainer/Inputs/Scale/Value/Y"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Params/ScrollContainer/Inputs/Scale/Value/Y"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Z" type="Control" parent="Params/ScrollContainer/Inputs/Scale/Value"]
+margin_top = 50.0
+margin_right = 140.0
+margin_bottom = 50.0
+
+[node name="LineEditZ" type="LineEdit" parent="Params/ScrollContainer/Inputs/Scale/Value/Z"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Params/ScrollContainer/Inputs/Scale/Value/Z"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InitRotation" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_top = 136.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/InitRotation"]
+margin_right = 309.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 50 )
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Init rotation"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="VBoxContainer" parent="Params/ScrollContainer/Inputs/InitRotation"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 75.0
+theme = ExtResource( 4 )
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Control" parent="Params/ScrollContainer/Inputs/InitRotation/Value"]
+margin_right = 140.0
+
+[node name="LineEditX" type="LineEdit" parent="Params/ScrollContainer/Inputs/InitRotation/Value/X"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Params/ScrollContainer/Inputs/InitRotation/Value/X"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Y" type="Control" parent="Params/ScrollContainer/Inputs/InitRotation/Value"]
+margin_top = 25.0
+margin_right = 140.0
+margin_bottom = 25.0
+
+[node name="LineEditY" type="LineEdit" parent="Params/ScrollContainer/Inputs/InitRotation/Value/Y"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Params/ScrollContainer/Inputs/InitRotation/Value/Y"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Z" type="Control" parent="Params/ScrollContainer/Inputs/InitRotation/Value"]
+margin_top = 50.0
+margin_right = 140.0
+margin_bottom = 50.0
+
+[node name="LineEditZ" type="LineEdit" parent="Params/ScrollContainer/Inputs/InitRotation/Value/Z"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Params/ScrollContainer/Inputs/InitRotation/Value/Z"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinRotation" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_top = 229.0
+margin_bottom = 289.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/WinRotation"]
+margin_right = 309.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 50 )
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Win rotation"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="VBoxContainer" parent="Params/ScrollContainer/Inputs/WinRotation"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 75.0
+theme = ExtResource( 4 )
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Control" parent="Params/ScrollContainer/Inputs/WinRotation/Value"]
+margin_right = 140.0
+
+[node name="LineEditX" type="LineEdit" parent="Params/ScrollContainer/Inputs/WinRotation/Value/X"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Params/ScrollContainer/Inputs/WinRotation/Value/X"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Y" type="Control" parent="Params/ScrollContainer/Inputs/WinRotation/Value"]
+margin_top = 25.0
+margin_right = 140.0
+margin_bottom = 25.0
+
+[node name="LineEditY" type="LineEdit" parent="Params/ScrollContainer/Inputs/WinRotation/Value/Y"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Params/ScrollContainer/Inputs/WinRotation/Value/Y"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Z" type="Control" parent="Params/ScrollContainer/Inputs/WinRotation/Value"]
+margin_top = 50.0
+margin_right = 140.0
+margin_bottom = 50.0
+
+[node name="LineEditZ" type="LineEdit" parent="Params/ScrollContainer/Inputs/WinRotation/Value/Z"]
+margin_left = 15.0
+margin_right = 115.0
+margin_bottom = 24.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Params/ScrollContainer/Inputs/WinRotation/Value/Z"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_top = 322.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/Name"]
+margin_right = 280.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Name"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextName" type="LineEdit" parent="Params/ScrollContainer/Inputs/Name"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 5 )
+placeholder_text = "Enter name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RotationRound" type="Control" parent="Params/ScrollContainer/Inputs"]
+margin_top = 365.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="Name" type="Label" parent="Params/ScrollContainer/Inputs/RotationRound"]
+margin_right = 280.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 3 )
+text = "Rotation +-"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextRotationRound" type="LineEdit" parent="Params/ScrollContainer/Inputs/RotationRound"]
+margin_left = 115.0
+margin_right = 255.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 5 )
+placeholder_text = "Enter rotation round (1 or 2 or ..)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="View" type="Control" parent="."]
+margin_left = 15.0
+margin_top = 135.0
+margin_right = 445.0
+margin_bottom = 585.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="View"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 435.0
+margin_bottom = 455.0
+color = Color( 0.737255, 0.737255, 0.737255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="View"]
+margin_top = 50.0
+margin_right = 430.0
+margin_bottom = 450.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="View/ViewportContainer"]
+size = Vector2( 430, 400 )
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="View/ViewportContainer/Viewport"]
+transform = Transform( 0.930211, 0.0454365, 0.364201, -0.099812, 0.986226, 0.131893, -0.353191, -0.15904, 0.921934, 2.042, 2.5, -0.087 )
+
+[node name="Spatial" parent="View/ViewportContainer/Viewport" instance=ExtResource( 5 )]
+
+[node name="Label" type="Label" parent="View"]
+margin_left = 150.0
+margin_right = 325.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 3 )
+text = "Peview"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hide = SubResource( 1 )
+anims/show = SubResource( 2 )
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Control/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="pressed" from="Control2/DeleteAll" to="." method="_on_DeleteAll_pressed"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/ModelPath/Path" to="." method="_on_Path_focus_exited"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/Scale/Value/X/LineEditX" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/Scale/Value/Y/LineEditY" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/Scale/Value/Z/LineEditZ" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/InitRotation/Value/X/LineEditX" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/InitRotation/Value/Y/LineEditY" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/InitRotation/Value/Z/LineEditZ" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/WinRotation/Value/X/LineEditX" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/WinRotation/Value/Y/LineEditY" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/WinRotation/Value/Z/LineEditZ" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/Name/TextName" to="." method="updateRoom"]
+[connection signal="focus_exited" from="Params/ScrollContainer/Inputs/RotationRound/TextRotationRound" to="." method="updateRoom"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
